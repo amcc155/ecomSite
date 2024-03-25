@@ -1,9 +1,12 @@
-const Card = ({children})=>{
+import { NavLink } from "react-router-dom"
+const Card = ({children, className, productId})=>{
     
     return(
-        <div className="min-w-[280px] min-h-[100px]flex justify-center flex-col" >
+        <NavLink to = {`/product/${productId}`}>
+        <div className= {className} >
         {children}
         </div>
+        </NavLink>
     )
 }
 export default Card

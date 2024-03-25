@@ -7,7 +7,6 @@ const FeaturedBanner = ({images, children})=>{
     useEffect(() => {
         const interval = setInterval(() => {
             setVisible(false)
-       
             setTimeout(()=>{
                 setCurrentImage(count => (count + 1) % images.length)
                 setVisible(true) 

@@ -10,20 +10,16 @@ import { NavLink } from "react-router-dom";
 //IMPORT CONTEXTS
 import { useContext } from "react";
 import { ShopContext } from "../../context/GlobalState";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 //Categoy Nav componenet that will render the middle sub nav in the big nav
 const CategoriesNav = () => {
-  const { setCategory } = useContext(ShopContext);
   return (
     <nav>
       <ul className="flex gap-3 ">
-        <li onClick={() => setCategory("men's clothing")}>
-          <NavLink to="/men">Men</NavLink>
-        </li>
-
-        <li onClick={() => setCategory("women's clothing")}>
-          <NavLink to="/women">Women</NavLink>
-        </li>
+        <NavLink to="/men">Men</NavLink>
+        <NavLink to="/women">Women</NavLink>
       </ul>
     </nav>
   );
@@ -32,12 +28,30 @@ const CategoriesNav = () => {
 //main navbar component
 const NavBar = () => {
   const { setCategory } = useContext(ShopContext);
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log(location.pathname);
+    switch (location.pathname) {
+      case "/men":
+        setCategory("men's clothing");
+        break;
+      case "/women":
+        setCategory("women's clothing");
+        break;
+      case "/":
+        setCategory("");
+      default:
+        setCategory("");
+    }
+  }, [location]);
+
   return (
     <nav>
       <ul className="flex justify-between ml-5 mt-5">
-        <li onClick={() => setCategory("")}>
+        <NavLink to="/">
           <FontAwesomeIcon icon={faStickerMule} size="2x" />
-        </li>
+        </NavLink>
         <CategoriesNav />
         <div className="flex gap-5 mr-5">
           <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" />

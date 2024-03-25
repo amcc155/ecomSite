@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./layouts/Header";
-
 import { ShopContext } from "./context/GlobalState";
 import useFetchData from "./api/fetchData";
-import LoaderCircle from "./components/spinner/LoaderCircle";
 import BrowsePage from "./pages/BrowsePage";
-import { Router, RouterProvider } from "react-router-dom";
+import {RouterProvider, useLocation } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import { Outlet } from 'react-router-dom'
+import Product from "./pages/Product";
 import HomePage from "./pages/HomePage";
-
 const Layout = () =>{
   
   return(
@@ -22,6 +20,7 @@ const Layout = () =>{
 }
 
 const router = createBrowserRouter([
+  
   {
     element: <Layout/>,
     children:[
@@ -39,16 +38,21 @@ const router = createBrowserRouter([
     path:"/women",
     element: <BrowsePage/>
   },
+
+  {
+    path:"/product/:productId",
+    element: <Product/>
+  },
   ]
 }
 ])
 
 function App() {
+
   const [category, setCategory] = useState("");
   let { data, error, loading } = useFetchData(category);
   const products = data;
-   console.log('rendered')
-   console.log(products);
+  console.log(products);
 
   return (
     <>
