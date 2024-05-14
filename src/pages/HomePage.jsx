@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { ShopContext } from "../context/GlobalState";
+import {motion} from 'framer-motion'
 import LoaderCircle from "../components/spinner/LoaderCircle";
 import Card from "../components/Card.";
 import FeaturedBanner from "../components/FeaturedBanner";
-import showCaseImage1 from "../assets/images/homeImage_1.jpeg";
-import pic2 from "../assets/images/madeUpShoe.png";
+import showCaseImage1 from "../assets/images/james-marty-h1BuNJZzpC8-unsplash.jpg"
+import pic2 from "../assets/images/brooke-cagle-ezgW6z6oIvA-unsplash.jpg"
+import yellowOutfit from "../assets/images/dom-hill-nimElTcTNyY-unsplash.jpg"
 
 ///Category Row Componenet
 const CategoryRow = ({ product }) => {
@@ -27,6 +29,7 @@ const CategoryRow = ({ product }) => {
 };
 
 const HomePage = () => {
+
   const { products } = useContext(ShopContext);
   //turn the json data into a object, where the category will be the keys, and the value will an array of
   //object
@@ -41,7 +44,7 @@ const HomePage = () => {
 
   return (
     <>
-      <FeaturedBanner images={[showCaseImage1, pic2]} />
+      <FeaturedBanner images={[showCaseImage1, pic2, yellowOutfit]} />
 
       {GroupedProducts.map(([category, product]) => (
         <div key={category}>

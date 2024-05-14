@@ -8,6 +8,7 @@ const useFetchData = (category) => {
   useEffect(() => {
     const fetchData = async () => {
         setLoading(true)
+        console.log(loading)
         
       try {
         const response = await fetch(
@@ -21,6 +22,7 @@ const useFetchData = (category) => {
         const jsonData = await response.json();
         
         setLoading(false)
+        
         setData(jsonData);
       } catch (error) {
         console.error('Fetch error:', error.message);

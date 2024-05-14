@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./layouts/Header";
 import { ShopContext } from "./context/GlobalState";
@@ -9,6 +9,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Outlet } from 'react-router-dom'
 import Product from "./pages/Product";
 import HomePage from "./pages/HomePage";
+
 const Layout = () =>{
   
   return(
@@ -20,6 +21,8 @@ const Layout = () =>{
 }
 
 const router = createBrowserRouter([
+
+
   
   {
     element: <Layout/>,
@@ -51,12 +54,20 @@ function App() {
 
   const [category, setCategory] = useState("");
   let { data, error, loading } = useFetchData(category);
-  const products = data;
+  
+  const[products, setProducts] = useState(data)
+
+  useEffect(() => {
+    if (data) {
+      setProducts(data);
+    }
+  }, [data]);
   console.log(products);
+  console.log('app');
 
   return (
     <>
-      <ShopContext.Provider value={{ products, setCategory, error, loading }}>
+      <ShopContext.Provider value={{ products, setCategory, error, loading, setProducts}}>
         <RouterProvider router = {router}/>
        
       </ShopContext.Provider>

@@ -4,8 +4,9 @@ const Header = () => {
     return(
 
     <header>
-    <NavBar/>
     <BannerText/>
+    <NavBar/>
+   
     </header>
     )
 }

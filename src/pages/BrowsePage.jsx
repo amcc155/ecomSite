@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { ShopContext } from "../context/GlobalState";
 import Card from "../components/Card.";
 import LoaderCircle from "../components/spinner/LoaderCircle";
@@ -7,6 +7,10 @@ import LoaderCircle from "../components/spinner/LoaderCircle";
 const BrowsePage = () => {
     const { products, loading } = useContext(ShopContext);
 
+    useEffect(() => {
+        console.log('page has rendered')
+    },[])
+
     return (
         <>
         <h2> {products.category} </h2>
@@ -14,7 +18,6 @@ const BrowsePage = () => {
             
             {!loading? (
                 products.map((product, index) => (
-                  
                     <Card productId = {product.id} className = {"border-2 border-sky-500 min-h-[200px] mb-3 hover:scale-105 transition-transform cursor-pointer"} key={index}>
                     <img className = "max-h-[200px] m-auto" src = {product.image}/>
                     <p className = 'text-center' > {product.title}</p>

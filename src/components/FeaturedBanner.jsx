@@ -22,8 +22,8 @@ const FeaturedBanner = ({images, children})=>{
     
     
     return(
-        <div className="mx-auto">
-        <img className ={`my-3 w-11/12 min-h-[600px] mx-auto transition-opacity ease-in-out duration-750 ${visible? "translate-x-0" : ""}`} src = {images[currentImage]}/>
+        <div className="mr-9 ml-9">
+        <img className ={`my-3 w-full mx-auto min-h-[200px] max-h-[550px]  transition-opacity ease-in-out duration-750 ${visible? "translate-x-0" : ""}`} src = {images[currentImage]}/>
         {children}
         </div>
     )
