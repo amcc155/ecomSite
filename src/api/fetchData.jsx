@@ -7,6 +7,7 @@ const useFetchData = (category) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log('fetching data ran')
         setLoading(true)
         console.log(loading)
         

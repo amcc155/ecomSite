@@ -43,6 +43,11 @@ const router = createBrowserRouter([
   },
 
   {
+    path:"/searchResults",
+    element: <BrowsePage/>
+  },
+
+  {
     path:"/product/:productId",
     element: <Product/>
   },
@@ -52,9 +57,12 @@ const router = createBrowserRouter([
 
 function App() {
 
+console.log('app ran')
   const [category, setCategory] = useState("");
+
+
   let { data, error, loading } = useFetchData(category);
-  
+  console.log('appp should be right after fetcg' + category)
   const[products, setProducts] = useState(data)
 
   useEffect(() => {
@@ -62,8 +70,8 @@ function App() {
       setProducts(data);
     }
   }, [data]);
-  console.log(products);
-  console.log('app');
+
+
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { ShopContext } from "../context/GlobalState";
-import Card from "../components/Card.";
+import Card from "../components/Card";
 import LoaderCircle from "../components/spinner/LoaderCircle";
 
 // currently home function. Make this a layout componenent that will be re usable for every similar page

@@ -1,5 +1,5 @@
-//framer motion 
-import {motion} from "framer-motion"
+//framer motion
+import { motion } from "framer-motion";
 //IMPORT FONTS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStickerMule } from "@fortawesome/free-brands-svg-icons";
@@ -16,19 +16,17 @@ import { ShopContext } from "../../context/GlobalState";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import CategoryButton from "./CategoryButton";
+import IconWrapper from "./IconWrapper";
 
 //Categoy Nav componenet that will render the middle sub nav in the big nav
 const CategoriesNav = () => {
-  const {products} = useContext(ShopContext);
-
-  const categories = new Set(products.map((product) => product.category));
+  const { products } = useContext(ShopContext);
 
   return (
     <nav>
       <ul className="flex gap-3 ">
-        <CategoryButton location={'/men'} > Men </CategoryButton>
-        <CategoryButton location = {'/women'} > Women </CategoryButton>
-        
+        <CategoryButton location={"/men"}> Men </CategoryButton>
+        <CategoryButton location={"/women"}> Women </CategoryButton>
       </ul>
     </nav>
   );
@@ -37,14 +35,14 @@ const CategoriesNav = () => {
 //main navbar component
 const NavBar = () => {
   const [searching, setSearching] = useState(false);
-
-  //search bar click event
-  const onSearchClick = () => {
-    setSearching(!searching);
-  };
-
   const { setCategory } = useContext(ShopContext);
   const location = useLocation();
+
+  //search bar click event
+  const onSearchClick = (e) => {
+    e.stopPropagation();
+    setSearching(!searching);
+  };
 
   useEffect(() => {
     console.log(location.pathname);
@@ -63,27 +61,38 @@ const NavBar = () => {
   }, [location]);
 
   return (
-    <nav className="sticky w-full top-0 z-9 items-center overflow-auto ">
-      <ul className="flex justify-between mx-5 mt-5 ">
-        <NavLink to="/">
+    <>
+      <nav className="sticky w-full top-0 z-9 items-center overflow-auto ">
+        <ul className="flex justify-between mx-5 mt-5 ">
+          <NavLink to="/">
+            <h2 className="text-4xl text-emerald-300 font-sans"> Store </h2>
+          </NavLink>
 
-          <h2 className="text-4xl text-emerald-300 font-sans"> Store </h2>
-      
-        </NavLink>
+          <CategoriesNav />
 
-        <CategoriesNav />
-        <div className="flex gap-5 mr-5 items-center ">
-          <FontAwesomeIcon
-            icon={faMagnifyingGlass}
-            size="lg"
-            onClick={onSearchClick}
-          />
-           {searching && <SearchForm/>}
-          <FontAwesomeIcon icon={faBagShopping} size="lg" />
-          <FontAwesomeIcon icon={faUser} size="lg" />
-        </div>
-      </ul>
-    </nav>
+          <div className="flex  mr-5 items-center ">
+            <IconWrapper>
+              <FontAwesomeIcon
+                icon={faMagnifyingGlass}
+                size="lg"
+                onClick={onSearchClick}
+              />
+            </IconWrapper>
+
+            <IconWrapper>
+              <FontAwesomeIcon icon={faBagShopping} size="lg" />
+            </IconWrapper>
+
+            <IconWrapper>
+              <FontAwesomeIcon icon={faUser} size="lg" />
+            </IconWrapper>
+          </div>
+        </ul>
+      </nav>
+      {searching && (
+        <SearchForm searching={searching} setSearching={setSearching} />
+      )}
+    </>
   );
 };
 export default NavBar;
