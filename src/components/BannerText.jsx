@@ -22,9 +22,9 @@ const BannerText = () => {
   }, [textList]);
 
   return (
-    <div className="mx-auto bg-emerald-300 h-8 my-px flex justify-center items-center">
+    <div className="mx-auto bg-cool-red h-8 my-px flex justify-center items-center">
       <p
-        className={`text-center transition-opacity duration-700 ease-in-out text-slate-800 ${
+        className={`text-center transition-opacity duration-700 ease-in-out text-light-gray ${
           fade ? "opacity-100" : "opacity-0"
         }`}
       >

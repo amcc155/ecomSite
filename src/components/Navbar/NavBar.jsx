@@ -25,8 +25,8 @@ const CategoriesNav = () => {
   return (
     <nav>
       <ul className="flex gap-3 ">
-        <CategoryButton location={"/men"}> Men </CategoryButton>
-        <CategoryButton location={"/women"}> Women </CategoryButton>
+      <li>  <CategoryButton location={"/men"}>  <p className="text-dark-gray"> Men </p> </CategoryButton> </li>
+       <li>  <CategoryButton location={"/women"}> <p className="text-dark-gray"> Women </p> </CategoryButton> </li>
       </ul>
     </nav>
   );
@@ -65,7 +65,7 @@ const NavBar = () => {
       <nav className="sticky w-full top-0 z-9 items-center overflow-auto ">
         <ul className="flex justify-between mx-5 mt-5 ">
           <NavLink to="/">
-            <h2 className="text-4xl text-emerald-300 font-sans"> Store </h2>
+            <h2 className="text-4xl text-cool-red font-sans"> Store </h2>
           </NavLink>
 
           <CategoriesNav />
