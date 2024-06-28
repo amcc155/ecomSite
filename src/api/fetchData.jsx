@@ -1,20 +1,19 @@
 import { useState, useEffect} from 'react';
 //custom hook to fetch the store api data anywhere, returns 3 states, data loading and error, so I will be able to handle async tasks
-const useFetchData = (category) => {
+const useFetchData = (url) => {
     const[data, setData] = useState([])
     const[loading, setLoading] = useState(true)
     const[error, setError] = useState(false)
 
   useEffect(() => {
+   
     const fetchData = async () => {
-      console.log('fetching data ran')
+      console.log('fuck')
         setLoading(true)
         console.log(loading)
         
       try {
-        const response = await fetch(
-          `https://fakestoreapi.com/${category ? `products/category/${category}` : 'products'}`
-        );
+        const response = await fetch(url);
         
         if (!response.ok) {
          setError(true)
@@ -32,7 +31,7 @@ const useFetchData = (category) => {
     };
 
     fetchData();
-  },[category]);
+  },[url]);
 
   return {data, loading, error}; 
 };

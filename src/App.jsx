@@ -56,18 +56,17 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-
-console.log('app ran')
   const [category, setCategory] = useState("");
 
 
-  let { data, error, loading } = useFetchData(category);
+  let { data, error, loading } = useFetchData(`https://fakestoreapi.com/products/category/${category}`);
   console.log('appp should be right after fetcg' + category)
   const[products, setProducts] = useState(data)
 
   useEffect(() => {
     if (data) {
       setProducts(data);
+      console.log(products)
     }
   }, [data]);
 
