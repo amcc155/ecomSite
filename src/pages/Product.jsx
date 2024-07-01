@@ -35,7 +35,7 @@ const Product = () => {
               </p>
               <div className="mx-6 mt-5">
               <p> &#36;{product.price} </p>
-              <button className=" text-slate-50 w-[200px] h-[50px] bg-cool-red">
+              <button className=" text-slate-50 w-[200px] h-[50px] bg-emerald-500">
                 {" "}
                 Add To Cart{" "}
               </button>

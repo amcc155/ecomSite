@@ -44,7 +44,7 @@ const PreviewImages = () => {
 
           <h1 className=" font-extrabold text-xl pb-1 mt-5 "> {header} </h1>
           <p> {description} </p>
-          <button className=" bg-cool-red text-light-gray px-2 py-1 mt-2 mb-9"> Shop {type} </button>
+          <button className=" bg-emerald-500 text-slate-50 px-2 py-1 mt-2 mb-9"> Shop {type} </button>
         </div>
       ))}
     </>

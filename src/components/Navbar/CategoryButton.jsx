@@ -5,7 +5,7 @@ const CategoryButton = ({location, children})=>{
         <motion.button
         whileHover={{scale: 1.1}}
         whileTap={{scale: 0.9}}
-        className='border-black-gray border-2 w-24 h-12 flex justify-center items-center '
+        className='border-sate-50 border-2 w-24 h-12 flex justify-center items-center '
 
         >
           <NavLink to = {location} > {children} </NavLink>
