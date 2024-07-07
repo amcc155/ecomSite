@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import homePageData from "../../public/assets/data/homepagePicturesData";
-import { ShopContext } from "../context/GlobalState";
+import { ShopContext } from "../context/ShopContext";
 import Card from "../components/Card";
 import FeaturedBanner from "../components/FeaturedBanner";
 import showCaseImage1 from "../../public/assets/images/james-marty-h1BuNJZzpC8-unsplash.jpg";
@@ -38,8 +38,8 @@ const PreviewImages = () => {
         <div className="mx-9">
 
           <div className=" flex bg-cyan-200">
-            <img className=" h-96 w-2/4" src={images[0]} />
-            <img className="h-96 w-2/4" src={images[1]} />
+            <img className=" h-96 w-2/4 object-cover" src={images[0]} />
+            <img className="h-96 w-2/4 object-cover" src={images[1]} />
           </div>
 
           <h1 className=" font-extrabold text-xl pb-1 mt-5 "> {header} </h1>

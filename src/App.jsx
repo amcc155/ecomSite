@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./App.css";
 import Header from "./layouts/Header";
-import { ShopContext } from "./context/GlobalState";
+import { ShopContext, ShopProvider} from "./context/ShopContext";
 import useFetchData from "./api/fetchData";
 import BrowsePage from "./pages/BrowsePage";
 import {RouterProvider, useLocation } from "react-router-dom";
@@ -9,6 +9,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { Outlet } from 'react-router-dom'
 import Product from "./pages/Product";
 import HomePage from "./pages/HomePage";
+import { CartProvider } from "./context/CartContext";
 
 const Layout = () =>{
   
@@ -56,28 +57,16 @@ const router = createBrowserRouter([
 ])
 
 function App() {
-  const [category, setCategory] = useState("");
-
-
-  let { data, error, loading } = useFetchData(`https://fakestoreapi.com/products/category/${category}`);
-  console.log('appp should be right after fetcg' + category)
-  const[products, setProducts] = useState(data)
-
-  useEffect(() => {
-    if (data) {
-      setProducts(data);
-      console.log(products)
-    }
-  }, [data]);
-
-
-
+ 
   return (
     <>
-      <ShopContext.Provider value={{ products, setCategory, error, loading, setProducts}}>
+    
+    <CartProvider>
+      <ShopProvider>
         <RouterProvider router = {router}/>
-       
-      </ShopContext.Provider>
+        </ShopProvider>
+    
+      </CartProvider>
     </>
   );
 }

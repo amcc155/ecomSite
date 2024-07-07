@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { ShopContext } from "../context/GlobalState";
+import { ShopContext } from "../context/ShopContext";
 import useFetchData from "../api/fetchData";
 const Product = () => {
   //get products from context

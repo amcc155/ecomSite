@@ -12,7 +12,7 @@ import { NavLink } from "react-router-dom";
 import SearchForm from "../SearchForm";
 //IMPORT CONTEXTS
 import { useContext, useState } from "react";
-import { ShopContext } from "../../context/GlobalState";
+import { ShopContext} from "../../context/ShopContext";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import CategoryButton from "./CategoryButton";
@@ -45,6 +45,7 @@ const NavBar = () => {
   };
 
   useEffect(() => {
+  
     console.log(location.pathname);
     switch (location.pathname) {
       case "/men":
@@ -81,7 +82,9 @@ const NavBar = () => {
 
             <IconWrapper>
               <FontAwesomeIcon icon={faBagShopping} size="lg" />
+          
             </IconWrapper>
+        
 
             <IconWrapper>
               <FontAwesomeIcon icon={faUser} size="lg" />

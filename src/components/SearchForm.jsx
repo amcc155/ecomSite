@@ -1,5 +1,5 @@
 import { useContext, useState, useRef, useEffect } from "react";
-import { ShopContext } from "../context/GlobalState";
+import { ShopContext } from "../context/ShopContext";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Card from "./Card";

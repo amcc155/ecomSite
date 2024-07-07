@@ -1,17 +1,14 @@
 import React, { useContext, useEffect } from "react";
-import { ShopContext } from "../context/GlobalState";
+import { ShopContext } from "../context/ShopContext";
 import Card from "../components/Card";
-import LoaderCircle from "../components/spinner/LoaderCircle";
 import SkeletonCard from "../components/SkeletonCard";
+
 
 // currently home function. Make this a layout componenent that will be re usable for every similar page
 const BrowsePage = () => {
     const { products, loading } = useContext(ShopContext);
-
-    useEffect(() => {
-        console.log('page has rendered')
-    },[])
-
+   
+   
     return (
         <>
         <h2> {products.category} </h2>
