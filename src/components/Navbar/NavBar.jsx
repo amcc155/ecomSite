@@ -13,7 +13,7 @@ import SearchForm from "../SearchForm";
 //IMPORT CONTEXTS
 import { useContext, useState } from "react";
 import { ShopContext} from "../../context/ShopContext";
-import { useLocation } from "react-router-dom";
+
 import { useEffect } from "react";
 import CategoryButton from "./CategoryButton";
 import IconWrapper from "./IconWrapper";
@@ -35,8 +35,8 @@ const CategoriesNav = () => {
 //main navbar component
 const NavBar = () => {
   const [searching, setSearching] = useState(false);
-  const { setCategory } = useContext(ShopContext);
-  const location = useLocation();
+
+
 
   //search bar click event
   const onSearchClick = (e) => {
@@ -44,22 +44,7 @@ const NavBar = () => {
     setSearching(!searching);
   };
 
-  useEffect(() => {
-  
-    console.log(location.pathname);
-    switch (location.pathname) {
-      case "/men":
-        setCategory("men's clothing");
-        break;
-      case "/women":
-        setCategory("women's clothing");
-        break;
-      case "/":
-        setCategory("");
-      default:
-        setCategory("");
-    }
-  }, [location]);
+
 
   return (
     <>

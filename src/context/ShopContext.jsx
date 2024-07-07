@@ -1,26 +1,25 @@
 import React, { createContext, useState, useEffect } from "react";
 import useFetchData from "../api/fetchData";
 
+
+
 export const ShopContext = createContext({
   products: [],
 });
 
+
 export const ShopProvider = ({ children }) => {
+
+
   console.log('shopContext')
-  const [category, setCategory] = useState("");
-  let { data, error, loading } = useFetchData(
-    `https://fakestoreapi.com/products/category/${category}`
-  );
+  console.log(window.location.pathname)
+  const [category, setCategory] = useState([])
+  const[products, setProducts] = useState([])
+  const data = []
+  const error = ''
+  const loading = ''
 
-  const [products, setProducts] = useState(data);
-
-  useEffect(() => {
-    if (data) {
-      setProducts(data);
   
-    }
-  }, [data]);
-
 
 
   return (
