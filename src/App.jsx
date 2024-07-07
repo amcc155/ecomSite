@@ -11,6 +11,7 @@ import Product from "./pages/Product";
 import HomePage from "./pages/HomePage";
 import { CartProvider } from "./context/CartContext";
 
+
 const Layout = () =>{
   
   return(
@@ -52,6 +53,8 @@ const router = createBrowserRouter([
     path:"/product/:productId",
     element: <Product/>
   },
+
+
   ]
 }
 ])

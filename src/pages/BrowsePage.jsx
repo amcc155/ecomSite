@@ -7,8 +7,8 @@ import SkeletonCard from "../components/SkeletonCard";
 // currently home function. Make this a layout componenent that will be re usable for every similar page
 const BrowsePage = () => {
     const { products, loading } = useContext(ShopContext);
-   
-   
+   console.log(products, loading)
+    
     return (
         <>
         <h2> {products.category} </h2>

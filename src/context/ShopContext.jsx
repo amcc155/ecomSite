@@ -25,7 +25,7 @@ export const ShopProvider = ({ children }) => {
 
   return (
     <ShopContext.Provider
-      value={{ data, error, loading, products, category, setCategory, setProducts }}
+      value={{ data, error, loading, products, category, setCategory, setProducts}}
     >
       {children}
     </ShopContext.Provider>

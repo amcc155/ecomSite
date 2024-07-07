@@ -69,6 +69,8 @@ const NavBar = () => {
             <h2 className="text-4xl text-cool-red font-sans"> Store </h2>
           </NavLink>
 
+          
+
           <CategoriesNav />
 
           <div className="flex  mr-5 items-center ">

@@ -8,7 +8,8 @@ const useFetchData = (url) => {
   useEffect(() => {
    
     const fetchData = async () => {
-      console.log('fuck')
+        console.log('fetchin data')
+        console.log(url)
         setLoading(true)
         console.log(loading)
         
@@ -27,6 +28,9 @@ const useFetchData = (url) => {
       } catch (error) {
         console.error('Fetch error:', error.message);
         setData(null); 
+      }
+      finally{
+        setLoading(false)
       }
     };
 
