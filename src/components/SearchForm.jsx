@@ -6,7 +6,7 @@ import Card from "./Card";
 
 const SearchForm = ({ searching, setSearching }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const { products, setProducts } = useContext(ShopContext);
+  const { products, setProducts} = useContext(ShopContext);
   const [oldProducts, setOldProducts] = useState([products]);
 
   const navigate = useNavigate();
@@ -28,11 +28,14 @@ const SearchForm = ({ searching, setSearching }) => {
   }, [searching]);
 
   const handleInputChange = (e) => {
+    console.log(products)
     setSearchTerm(e.target.value);
+    
 
     const filteredProducts = products.filter((product) => {
       return product.title.toLowerCase().includes(searchTerm.toLowerCase());
     });
+    setOldProducts(products)
     setProducts(filteredProducts);
   };
 
@@ -82,9 +85,7 @@ const SearchForm = ({ searching, setSearching }) => {
           products.map((product, index) => (
             <Card
               productId={product.id}
-              className={
-                "border-2 border-sky-500 mb-3 hover:scale-105 transition-transform cursor-pointer"
-              }
+              size = {'small'}
               key={index}
             >
               <img className="max-h-[200px] m-auto" src={product.image} />

@@ -33,7 +33,10 @@ const CategoriesNav = () => {
 
 //main navbar component
 const NavBar = () => {
+  console.log('navbar')
   const [searching, setSearching] = useState(false);
+
+  
 
 
 

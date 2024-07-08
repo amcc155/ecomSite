@@ -19,7 +19,7 @@ const BrowsePage = () => {
             
             {!loading? (
                 categorizedProducts.map((product, index) => (
-                    <Card productId = {product.id} className = {"border-2 border-black-gray min-h-[200px] mb-3 hover:scale-105 transition-transform cursor-pointer"} key={index}>
+                    <Card productId = {product.id} size = {'large'} key={index}>
                     <img className = "max-h-[200px] m-auto" src = {product.image} alt = {product.title}/>
                     <p className = 'text-center' > {product.title}</p>
                     </Card>

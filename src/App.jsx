@@ -10,6 +10,7 @@ import { Outlet } from 'react-router-dom'
 import Product from "./pages/Product";
 import HomePage from "./pages/HomePage";
 import { CartProvider } from "./context/CartContext";
+import SearchResultsPage from "./pages/SearchResultsPage"
 
 
 const Layout = () =>{
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
 
   {
     path:"/searchResults",
-    element: <BrowsePage/>
+    element: <SearchResultsPage/>
   },
 
   {

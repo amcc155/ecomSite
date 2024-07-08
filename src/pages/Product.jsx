@@ -3,9 +3,7 @@ import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 import useFetchData from "../api/fetchData";
 const Product = () => {
-  //get products from context
-  const { products } = useContext(ShopContext);
-  const { productId } = useParams();
+const { productId } = useParams();
 
   const {
     data: product,
