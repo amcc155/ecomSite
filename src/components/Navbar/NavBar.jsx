@@ -11,9 +11,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import SearchForm from "../SearchForm";
 //IMPORT CONTEXTS
 import { useContext, useState } from "react";
-import { ShopContext} from "../../context/ShopContext";
-
-import { useEffect } from "react";
+import { ShopContext } from "../../context/ShopContext";
 import CategoryButton from "./CategoryButton";
 import IconWrapper from "./IconWrapper";
 
@@ -24,8 +22,20 @@ const CategoriesNav = () => {
   return (
     <nav>
       <ul className="flex gap-3 ">
-      <li>  <CategoryButton location={"/men"}>  <p className="text-dark-gray"> Men </p> </CategoryButton> </li>
-       <li>  <CategoryButton location={"/women"}> <p className="text-dark-gray"> Women </p> </CategoryButton> </li>
+        <li>
+          {" "}
+          <CategoryButton location={"/men"}>
+            {" "}
+            <p className="text-dark-gray"> Men </p>{" "}
+          </CategoryButton>{" "}
+        </li>
+        <li>
+          {" "}
+          <CategoryButton location={"/women"}>
+            {" "}
+            <p className="text-dark-gray"> Women </p>{" "}
+          </CategoryButton>{" "}
+        </li>
       </ul>
     </nav>
   );
@@ -33,20 +43,14 @@ const CategoriesNav = () => {
 
 //main navbar component
 const NavBar = () => {
-  console.log('navbar')
+  console.log("navbar");
   const [searching, setSearching] = useState(false);
-
-  
-
-
 
   //search bar click event
   const onSearchClick = (e) => {
     e.stopPropagation();
     setSearching(!searching);
   };
-
-
 
   return (
     <>
@@ -55,8 +59,6 @@ const NavBar = () => {
           <NavLink to="/">
             <h2 className="text-4xl text-cool-red font-sans"> Store </h2>
           </NavLink>
-
-          
 
           <CategoriesNav />
 
@@ -71,9 +73,7 @@ const NavBar = () => {
 
             <IconWrapper>
               <FontAwesomeIcon icon={faBagShopping} size="lg" />
-          
             </IconWrapper>
-        
 
             <IconWrapper>
               <FontAwesomeIcon icon={faUser} size="lg" />
