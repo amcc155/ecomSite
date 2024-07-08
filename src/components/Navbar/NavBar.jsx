@@ -2,13 +2,12 @@
 import { motion } from "framer-motion";
 //IMPORT FONTS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStickerMule } from "@fortawesome/free-brands-svg-icons";
 import {
   faMagnifyingGlass,
   faBagShopping,
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import SearchForm from "../SearchForm";
 //IMPORT CONTEXTS
 import { useContext, useState } from "react";
