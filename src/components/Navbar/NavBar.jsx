@@ -11,13 +11,13 @@ import { NavLink, useLocation } from "react-router-dom";
 import SearchForm from "../SearchForm";
 //IMPORT CONTEXTS
 import { useContext, useState } from "react";
-import { ShopContext } from "../../context/ShopContext";
 import CategoryButton from "./CategoryButton";
 import IconWrapper from "./IconWrapper";
+import { ShopProvider } from "../../context/ShopContext";
 
 //Categoy Nav componenet that will render the middle sub nav in the big nav
 const CategoriesNav = () => {
-  const { products } = useContext(ShopContext);
+  
 
   return (
     <nav>
@@ -82,7 +82,10 @@ const NavBar = () => {
         </ul>
       </nav>
       {searching && (
+      
         <SearchForm searching={searching} setSearching={setSearching} />
+   
+      
       )}
     </>
   );
