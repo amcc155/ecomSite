@@ -11,6 +11,9 @@ import Product from "./pages/Product";
 import HomePage from "./pages/HomePage";
 import { CartProvider } from "./context/CartContext";
 import SearchResultsPage from "./pages/SearchResultsPage"
+import CartPage from "./components/CartPage";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Layout = () =>{
@@ -55,6 +58,10 @@ const router = createBrowserRouter([
     element: <Product/>
   },
 
+  {
+  path: '/cart',
+  element: <CartPage/>
+  }
 
   ]
 }
@@ -68,6 +75,7 @@ function App() {
     <CartProvider>
       <ShopProvider>
         <RouterProvider router = {router}/>
+    
         </ShopProvider>
     
       </CartProvider>

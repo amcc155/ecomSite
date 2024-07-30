@@ -1,5 +1,4 @@
 //framer motion
-import { motion } from "framer-motion";
 //IMPORT FONTS
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,21 +10,31 @@ import { NavLink, useLocation } from "react-router-dom";
 import SearchForm from "../SearchForm";
 //IMPORT CONTEXTS
 import { useContext, useState } from "react";
-import { ShopContext} from "../../context/ShopContext";
-
-import { useEffect } from "react";
+import { CartContext } from "../../context/CartContext";
 import CategoryButton from "./CategoryButton";
 import IconWrapper from "./IconWrapper";
 
 //Categoy Nav componenet that will render the middle sub nav in the big nav
 const CategoriesNav = () => {
-  const { products } = useContext(ShopContext);
+
 
   return (
     <nav>
       <ul className="flex gap-3 ">
-      <li>  <CategoryButton location={"/men"}>  <p className="text-dark-gray"> Men </p> </CategoryButton> </li>
-       <li>  <CategoryButton location={"/women"}> <p className="text-dark-gray"> Women </p> </CategoryButton> </li>
+        <li>
+          {" "}
+          <CategoryButton location={"/men"}>
+            {" "}
+            <p className="text-dark-gray"> Men </p>{" "}
+          </CategoryButton>{" "}
+        </li>
+        <li>
+          {" "}
+          <CategoryButton location={"/women"}>
+            {" "}
+            <p className="text-dark-gray"> Women </p>{" "}
+          </CategoryButton>{" "}
+        </li>
       </ul>
     </nav>
   );
@@ -33,20 +42,16 @@ const CategoriesNav = () => {
 
 //main navbar component
 const NavBar = () => {
-  console.log('navbar')
+  console.log("navbar");
   const [searching, setSearching] = useState(false);
+  const {getCartLength} = useContext(CartContext)
 
-  
-
-
-
+  const cartLength = getCartLength()
   //search bar click event
   const onSearchClick = (e) => {
     e.stopPropagation();
     setSearching(!searching);
   };
-
-
 
   return (
     <>
@@ -55,8 +60,6 @@ const NavBar = () => {
           <NavLink to="/">
             <h2 className="text-4xl text-cool-red font-sans"> Store </h2>
           </NavLink>
-
-          
 
           <CategoriesNav />
 
@@ -69,11 +72,13 @@ const NavBar = () => {
               />
             </IconWrapper>
 
+          <NavLink to = '/cart'>
             <IconWrapper>
               <FontAwesomeIcon icon={faBagShopping} size="lg" />
-          
             </IconWrapper>
-        
+            </NavLink>
+
+            <p> {cartLength} </p>
 
             <IconWrapper>
               <FontAwesomeIcon icon={faUser} size="lg" />
