@@ -1,0 +1,11 @@
+.custom-toast{
+    min-height:20%;
+    height: auto;
+    
+
+ 
+  }.Toastify__toast-container--bottom-center {
+    bottom: 0px;
+    margin-bottom: 0rem; /* Adjust bottom margin if needed */
+  }
+  

@@ -3,8 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Card from "../components/Card";
 import SkeletonCard from "../components/SkeletonCard";
 import useFetchData from "../api/fetchData";
-import { useLocation } from "react-router-dom";
-import getCategoryFromPathname from "../utils/getDataFromPathName";
+import { useLocation, useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 
 
@@ -13,18 +12,21 @@ import { ShopContext } from "../context/ShopContext";
 const BrowsePage = () => {
     console.log('browse page')
     const[priceSort, setPriceSort] = useState(null)
-    const location = useLocation()
-    const category = getCategoryFromPathname(location.pathname)
+    const {products} = useContext(ShopContext)
+    const {category} = useParams()
+    
     const{data: categorizedProducts, loading, error} = useFetchData( `https://fakestoreapi.com/products/category/${category}?sort=${priceSort}`)
+  
+
     
     const onSelectChange = (e) =>{
-        console.log(e.target.value)
         setPriceSort(e.target.value)
     }
 
 
     return (
         <>
+   
         <form>
             <select onChange = {onSelectChange}>
                 <option value ='asc'> $Lowest - Highest </option>
@@ -33,7 +35,7 @@ const BrowsePage = () => {
             </form>
    
         <div className="grid grid-cols-2 gap-3 mt-10  mx-auto lg:max-w-[90%]">
-      
+       
             {!loading? (
                 categorizedProducts.map((product, index) => (
                     <Card productId = {product.id} size = {'large'} key={index}>

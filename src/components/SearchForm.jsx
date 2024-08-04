@@ -7,10 +7,13 @@ import Card from "./Card";
 const SearchForm = ({ searching, setSearching }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { products, setProducts} = useContext(ShopContext);
-  const [oldProducts, setOldProducts] = useState([products]);
+  const [oldProducts, setOldProducts] = useState(products);
 
   const navigate = useNavigate();
   const inputRef = useRef();
+  const filteredProducts = products.filter((product) => {
+    return product.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   //Use effect to add event listener
   useEffect(() => {
@@ -28,24 +31,17 @@ const SearchForm = ({ searching, setSearching }) => {
   }, [searching]);
 
   const handleInputChange = (e) => {
-    console.log(products)
+    console.log(filteredProducts)
     setSearchTerm(e.target.value);
-    
-
-    const filteredProducts = products.filter((product) => {
-      return product.title.toLowerCase().includes(searchTerm.toLowerCase());
-    });
-    setOldProducts(products)
-    setProducts(filteredProducts);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/searchResults");
+    navigate("/searchResults", {state:filteredProducts});
   };
 
   return (
-    <div className=" absolute pl-10 top-0 w-full z-50 left-0 bg-white h-screen">
+    <div className="fixed pl-10 top-0 w-full z-50 left-0 bg-white h-screen">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -82,7 +78,7 @@ const SearchForm = ({ searching, setSearching }) => {
 
       <div className="flex flex-col">
         {searching & (searchTerm.length > 3) &&
-          products.map((product, index) => (
+          filteredProducts.map((product, index) => (
             <Card
               productId={product.id}
               size = {'small'}

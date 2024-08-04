@@ -40,3 +40,10 @@
 .read-the-docs {
   color: #888;
 } */
+
+
+.custom-toast{
+  min-height:100px;
+  height: auto;
+  width:100%;
+}
