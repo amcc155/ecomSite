@@ -8,13 +8,16 @@ const SearchForm = ({ searching, setSearching }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { products, setProducts} = useContext(ShopContext);
   const [oldProducts, setOldProducts] = useState(products);
-
   const navigate = useNavigate();
   const inputRef = useRef();
   const filteredProducts = products.filter((product) => {
     return product.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
+  
 
+  useEffect(()=> {
+    inputRef.current.focus()
+  },[])
   //Use effect to add event listener
   useEffect(() => {
     const handleOutsideClick = (e) => {
