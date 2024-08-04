@@ -3,8 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Card from "../components/Card";
 import SkeletonCard from "../components/SkeletonCard";
 import useFetchData from "../api/fetchData";
-import { useLocation } from "react-router-dom";
-import getCategoryFromPathname from "../utils/getDataFromPathName";
+import { useLocation, useParams } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
 
 
@@ -13,15 +12,14 @@ import { ShopContext } from "../context/ShopContext";
 const BrowsePage = () => {
     console.log('browse page')
     const[priceSort, setPriceSort] = useState(null)
-    const location = useLocation()
     const {products} = useContext(ShopContext)
-    const category = getCategoryFromPathname(location.pathname)
+    const {category} = useParams()
+    
     const{data: categorizedProducts, loading, error} = useFetchData( `https://fakestoreapi.com/products/category/${category}?sort=${priceSort}`)
-    console.log(products)
+  
 
     
     const onSelectChange = (e) =>{
-        console.log(e.target.value)
         setPriceSort(e.target.value)
     }
 

@@ -11,7 +11,7 @@ import Product from "./pages/Product";
 import HomePage from "./pages/HomePage";
 import { CartProvider } from "./context/CartContext";
 import SearchResultsPage from "./pages/SearchResultsPage"
-import CartPage from "./components/CartPage";
+import CartPage from "./pages/Cart/CartPage";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -39,14 +39,11 @@ const router = createBrowserRouter([
   },
 
   {
-    path:"/men",
+    path:"/browse/:category",
     element: <BrowsePage/>
   },
 
-  {
-    path:"/women",
-    element: <BrowsePage/>
-  },
+  
 
   {
     path:"/searchResults",

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
   faBagShopping,
+  faBars
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { NavLink, useLocation } from "react-router-dom";
@@ -12,28 +13,39 @@ import SearchForm from "../SearchForm";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import CategoryButton from "./CategoryButton";
+import MobileCategories from "./mobileCategories";
 import IconWrapper from "./IconWrapper";
 
 //Categoy Nav componenet that will render the middle sub nav in the big nav
-const CategoriesNav = () => {
+export const CategoriesNav = ({mobilePopup = false}) => {
 
 
   return (
-    <nav>
-      <ul className="flex gap-3 ">
+    <nav className={`md:block ${mobilePopup? 'block' : 'hidden'} `}>
+      <ul className= {`flex gap-3 ${mobilePopup? 'flex-col': 'flex-row'} `}>
         <li>
           {" "}
-          <CategoryButton location={"/men"}>
+          <CategoryButton location={"/browse/men's clothing"}>
             {" "}
             <p className="text-dark-gray"> Men </p>{" "}
           </CategoryButton>{" "}
         </li>
         <li>
           {" "}
-          <CategoryButton location={"/women"}>
+          <CategoryButton location={"/browse/women's clothing"}>
             {" "}
             <p className="text-dark-gray"> Women </p>{" "}
           </CategoryButton>{" "}
+    </li>
+    <li>
+          <CategoryButton location = {"/browse/jewelery"}>
+            <p className = 'text-dark-gray' > Jewlery </p>
+            </CategoryButton>
+      </li>
+      <li>
+            <CategoryButton location = {"/browse/electronics"}>
+              <p className="text-dark-gray" > Electronics </p>
+              </CategoryButton>
         </li>
       </ul>
     </nav>
@@ -44,6 +56,7 @@ const CategoriesNav = () => {
 const NavBar = () => {
   console.log("navbar");
   const [searching, setSearching] = useState(false);
+  const[isCategoryNavPopup, setIsCategoryNavPopup] = useState(false)
   const {getCartLength} = useContext(CartContext)
 
   const cartLength = getCartLength()
@@ -61,9 +74,10 @@ const NavBar = () => {
             <h2 className="text-4xl text-cool-red font-sans"> Store </h2>
           </NavLink>
 
+       
           <CategoriesNav />
 
-          <div className="flex  mr-5 items-center ">
+          <div className="flex  mr-5 items-center">
             <IconWrapper>
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
@@ -83,12 +97,22 @@ const NavBar = () => {
             <IconWrapper>
               <FontAwesomeIcon icon={faUser} size="lg" />
             </IconWrapper>
+
+            <FontAwesomeIcon icon={faBars} className="md:hidden" size='lg' onClick = {() => setIsCategoryNavPopup(true)} />
+           
+     
           </div>
         </ul>
       </nav>
+     {isCategoryNavPopup&&(
+        <MobileCategories/>
+      )}
+     
+   
       {searching && (
         <SearchForm searching={searching} setSearching={setSearching} />
       )}
+      
     </>
   );
 };

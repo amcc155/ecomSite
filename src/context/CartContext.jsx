@@ -1,9 +1,9 @@
 import { createContext, useEffect } from "react";
 import React, { useState } from "react";
-import {toast, useToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css'
+import { toast, useToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import CustomToast from "../components/CustomToast";
-import '../styles/toast.css'
+import "../styles/toast.css";
 
 export const CartContext = createContext({
   cartItems: [],
@@ -17,12 +17,10 @@ export const CartProvider = ({ children }) => {
     return initialState;
   });
 
-  const[toastVisible, setToastVisible] = useState(false)
-  
+  const [toastVisible, setToastVisible] = useState(false);
 
   const getCartLength = () => {
     const cartLength = cartItems.reduce((acc, curr) => {
-      console.log(curr.count);
       return acc + curr.count;
     }, 0);
 
@@ -31,7 +29,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (item) => {
-    console.log(toast)
+    console.log(toast);
     let isAlreadyAdded = false;
 
     const updatedCartItems = [...cartItems];
@@ -50,19 +48,34 @@ export const CartProvider = ({ children }) => {
 
     setCartItems(updatedCartItems);
 
-    
-    toast.success(<CustomToast item = {item}/>, {
-      className: 'custom-toast', 
-      onClose: ()=> setToastVisible(false),
-      onOpen: ()=> setToastVisible(true)
-    })
+    toast.success(<CustomToast item={item} />, {
+      className: "custom-toast",
+      onClose: () => setToastVisible(false),
+      onOpen: () => setToastVisible(true),
+    });
+  };
+
+  const changeItemQuantity = (e, itemName) => {
+    console.log(e.target.value);
+    console.log(itemName)
+    const newItems = cartItems.map((item) => {
+      console.log(item)
+      if (item.title === itemName) {
+        return { ...item, count: parseInt(e.target.value) };
+      } else {
+        return item;
+      }
+    });
+    setCartItems(newItems);
   };
 
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const removeFromCart = (itemTitle) => {
+  const removeFromCart = (e, itemTitle) => {
+    e.stopPropagation();
+  
     setCartItems(cartItems.filter((item) => item.title !== itemTitle));
   };
 
@@ -74,7 +87,8 @@ export const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         getCartLength,
-        toastVisible
+        toastVisible,
+        changeItemQuantity,
       }}
     >
       {children}
