@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import homePageData from "../../public/assets/data/homepagePicturesData";
 import { ShopContext } from "../context/ShopContext";
 import Card from "../components/Card";
@@ -15,7 +15,7 @@ const PreviewImages = () => {
         <div className="mx-9">
 
           <div className="flex bg-cyan-200">
-            <img className=" h-96 w-2/4 object-cover" src={images[0]} />
+            <img className=" h-96 w-2/4 object-cover" src={images[0]}  />
             <img className="h-96 w-2/4 object-cover" src={images[1]} />
           </div>
 
@@ -29,6 +29,20 @@ const PreviewImages = () => {
 };
 
 const HomePage = () => {
+  useEffect(() => {
+    // List all images that you want to preload
+    const imagesToPreload = [
+      showCaseImage1,
+      pic2,
+      yellowOutfit,
+      ...homePageData.flatMap((data) => data.images),
+    ];
+
+    imagesToPreload.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, []);
 
   return (
     <>

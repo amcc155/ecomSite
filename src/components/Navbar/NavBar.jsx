@@ -99,14 +99,17 @@ const NavBar = () => {
               <FontAwesomeIcon icon={faUser} size="lg" />
             </IconWrapper>
 
-            <FontAwesomeIcon icon={faBars} className="md:hidden" size='lg' onClick = {() => setIsCategoryNavPopup(true)} />
+            <FontAwesomeIcon icon={faBars} className="md:hidden" size='lg' onClick = {(e) => {
+              e.stopPropagation()
+              setIsCategoryNavPopup(true)
+              }} />
            
      
           </div>
         </ul>
       </nav>
      {isCategoryNavPopup&&(
-        <MobileCategories/>
+        <MobileCategories setIsCategoryNavPopup = {setIsCategoryNavPopup} isCategoryNavPopup={isCategoryNavPopup}/>
       )}
      
    

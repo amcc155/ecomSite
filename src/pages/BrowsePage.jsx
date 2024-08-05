@@ -27,7 +27,7 @@ const BrowsePage = () => {
     return (
         <>
    
-        <form>
+        <form className="mt-5 ml-2">
             <select onChange = {onSelectChange}>
                 <option value ='asc'> $Lowest - Highest </option>
                 <option value = 'desc' > $Highest - Lowesst </option>
