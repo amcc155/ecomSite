@@ -1,7 +1,8 @@
-import { useContext, useState, useRef, useEffect } from "react";
+import { useContext, useState, useRef, useEffect, useCallback } from "react";
 import { ShopContext } from "../context/ShopContext";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { debounce } from "lodash";
 import Card from "./Card";
 
 const SearchForm = ({ searching, setSearching }) => {
@@ -10,6 +11,14 @@ const SearchForm = ({ searching, setSearching }) => {
   const [oldProducts, setOldProducts] = useState(products);
   const navigate = useNavigate();
   const inputRef = useRef();
+
+  const debounceQueryChange = useCallback(
+    debounce((e)=>{
+      setSearchTerm(e.target.value)
+    } , 2000)
+, []
+  )
+
   const filteredProducts = products.filter((product) => {
     return product.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
@@ -59,7 +68,7 @@ const SearchForm = ({ searching, setSearching }) => {
             <input
               className=" bg-slate-300 rounded-full w-96 pl-3 h-8 "
               type="text"
-              onChange={handleInputChange}
+              onChange={debounceQueryChange}
               ref={inputRef}
               placeholder="Search"
             />
