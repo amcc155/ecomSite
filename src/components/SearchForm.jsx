@@ -8,20 +8,23 @@ import Card from "./Card";
 const SearchForm = ({ searching, setSearching }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const { products, setProducts} = useContext(ShopContext);
-  const [oldProducts, setOldProducts] = useState(products);
+  const[isTyping, setIsTyping] = useState(false);
   const navigate = useNavigate();
   const inputRef = useRef();
 
   const debounceQueryChange = useCallback(
+   
     debounce((e)=>{
+      inputRef.current.value !='' ? setIsTyping(true): setIsTyping(false)
       setSearchTerm(e.target.value)
-    } , 2000)
+    } , 500)
+   
 , []
   )
 
   const filteredProducts = products.filter((product) => {
     return product.title.toLowerCase().includes(searchTerm.toLowerCase());
-  });
+  }); 
   
 
   useEffect(()=> {
@@ -49,7 +52,10 @@ const SearchForm = ({ searching, setSearching }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate("/searchResults", {state:filteredProducts});
+  navigate("/searchResults", {
+      state: { filteredProducts },
+      search: `?query=${searchTerm}`
+    });
   };
 
   return (
@@ -76,6 +82,9 @@ const SearchForm = ({ searching, setSearching }) => {
             </div>
           </form>
           
+          {!isTyping && (
+
+       
           <div className="mt-8">
           <h2> Popular Search Terms </h2>
           <ul>
@@ -84,13 +93,15 @@ const SearchForm = ({ searching, setSearching }) => {
 
             </ul>
             </div>
+               )}
         </div>
-        
+   
       </motion.div>
 
       <div className="flex flex-col">
-        {searching & (searchTerm.length > 3) &&
-          filteredProducts.map((product, index) => (
+       
+          {isTyping &&(
+          filteredProducts?.map((product, index) => (
             <Card
               productId={product.id}
               size = {'small'}
@@ -99,6 +110,7 @@ const SearchForm = ({ searching, setSearching }) => {
               <img className="max-h-[200px] m-auto" src={product.image} />
               <p className="text-center"> {product.title}</p>
             </Card>
+          )
           ))}
       </div>
     </div>
