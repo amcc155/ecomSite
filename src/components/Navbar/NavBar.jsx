@@ -10,7 +10,7 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { NavLink, useLocation } from "react-router-dom";
 import SearchForm from "../SearchForm";
 //IMPORT CONTEXTS
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import CategoryButton from "./CategoryButton";
 import MobileCategories from "./mobileCategories";
@@ -53,6 +53,8 @@ export const CategoriesNav = ({mobilePopup = false}) => {
   );
 };
 
+
+
 //main navbar component
 const NavBar = () => {
   console.log("navbar");
@@ -69,8 +71,8 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="sticky w-full top-0 z-9 items-center overflow-auto ">
-        <ul className="flex justify-between mx-5 mt-5 ">
+      <nav className="sticky top-0 w-full bg-white h-[70px] flex   z-10 items-center   ">
+        <ul className="  flex w-full  justify-between  mx-5 ">
           <NavLink to="/">
             <h2 className="text-4xl text-cool-red font-sans"> Store </h2>
           </NavLink>

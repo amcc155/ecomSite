@@ -1,19 +1,18 @@
-import { useContext, useEffect, useState } from "react";
+
 import "./App.css";
 import Header from "./layouts/Header";
-import { ShopContext, ShopProvider} from "./context/ShopContext";
-import useFetchData from "./api/fetchData";
+import {ShopProvider} from "./context/ShopContext";
 import BrowsePage from "./pages/BrowsePage";
-import {RouterProvider, useLocation } from "react-router-dom";
+import {RouterProvider} from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import { Outlet } from 'react-router-dom'
 import Product from "./pages/Product";
 import HomePage from "./pages/HomePage";
 import { CartProvider } from "./context/CartContext";
 import SearchResultsPage from "./pages/SearchResultsPage"
-import CartPage from "./pages/Cart/CartPage";
-import { ToastContainer } from 'react-toastify';
+import CartPage from "./pages/Cart/CartPage";;
 import 'react-toastify/dist/ReactToastify.css';
+import NavBar from "./components/Navbar/NavBar";
 
 
 const Layout = () =>{
@@ -21,6 +20,8 @@ const Layout = () =>{
   return(
     <>
     <Header/>
+    <NavBar/>
+   
     <Outlet/>
     </>
   )
