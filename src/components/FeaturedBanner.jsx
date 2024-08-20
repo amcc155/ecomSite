@@ -12,7 +12,7 @@ const FeaturedBanner = ({images, children})=>{
                 setVisible(true) 
             }, 1000)
             
-            console.log(currentImage);
+            
         }, 5000);
     
         return () => {
@@ -22,8 +22,8 @@ const FeaturedBanner = ({images, children})=>{
     
     
     return(
-        <div className="mr-9 ml-9">
-        <img className ={`mt-3 mb-7 w-full mx-auto min-h-[200px] max-h-[550px] object-cover transition-opacity ease-in-out duration-750 ${visible? "translate-x-0" : ""}`} src = {images[currentImage]}/>
+        <div className="">
+        <img className ={`mb-7 w-full mx-auto min-h-[200px] max-h-[550px]  object-cover transition-opacity ease-in-out duration-750 ${visible? "translate-x-0" : ""}`} src = {images[currentImage]}/>
         {children}
         </div>
     )

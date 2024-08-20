@@ -12,7 +12,7 @@ const PreviewImages = () => {
   return (
     <>
       {homePageData.map(({images, header, type, description}) => (
-        <div className="mx-9">
+        <div className="">
 
           <div className="flex bg-cyan-200">
             <img className=" h-96 w-2/4 object-cover" src={images[0]}  />
@@ -45,11 +45,11 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
+    <div className="">
       <FeaturedBanner images={[showCaseImage1, pic2, yellowOutfit]} />
 
       <PreviewImages />
-    </>
+    </div>
   );
 };
 

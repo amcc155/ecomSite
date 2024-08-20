@@ -5,7 +5,7 @@ const Header = () => {
 
     <header>
     <BannerText/>
-    <NavBar/>
+   
    
     </header>
     )
