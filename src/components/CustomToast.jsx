@@ -2,7 +2,7 @@ const CustomToast = ({item}) => {
     return(
         <>
         <div className="flex items-center gap-5">
-        <img className="h-44" src = {item.image} />
+        <img className="h-44" src = {item.image}  alt = 'product thumbnail'/>
         <p> {item.title} </p>
         </div>
         <div className="flex justify-center">

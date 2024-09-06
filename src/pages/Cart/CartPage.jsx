@@ -29,6 +29,7 @@ const CartPage = () => {
                 <img
                   className="h-[150px] w-[150px] object-contain"
                   src={image}
+                  alt = {`thumnail of ${title}`}
                 />
               </NavLink>
 

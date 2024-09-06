@@ -108,7 +108,7 @@ const SearchForm = ({ searching, setSearching }) => {
               size = {'small'}
               key={index}
             >
-              <img className="max-h-[200px] m-auto" src={product.image} />
+              <img className="max-h-[200px] m-auto" src={product.image} alt = 'thubnail picture of product' />
               <p className="text-center"> {product.title}</p>
             </Card>
           )
