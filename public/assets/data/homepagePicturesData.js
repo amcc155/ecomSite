@@ -9,16 +9,18 @@ const homePageData = [
     {
 
         type: 'Womens',
-        images: ['/public/assets/images/yasamine-june-GVh5yGQwiA8-unsplash.jpg', '/public/assets/images/tai-s-captures-fauoKF4zMHU-unsplash.jpg']
+        images: ['/public/assets/images/yasamine-june-GVh5yGQwiA8-unsplash.jpg', '/public/assets/images/tai-s-captures-fauoKF4zMHU-unsplash.jpg'],
+        header:'Clothes for Women',
+        description: 'Comfortable clothes made for Everyone'
     },
 
     {
         type: 'Electronics',
-        images: ['imageurl']
+        images: ['/public/assets/images/lum3n--RBuQ2PK_L8-unsplash.jpg', '/public/assets/images/olivier-collet-hLXTRAMuvBY-unsplash.jpg']
     },
     {
         type: 'Jewlery',
-        images: ['imageurl']
+        images: ['/public/assets/images/ruan-richard-rodrigues-QwRwbZe6dWc-unsplash.jpg', '/public/assets/images/ian-talmacs-FMk8NacWplQ-unsplash.jpg']
     }
 
 ]

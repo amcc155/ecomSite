@@ -36,7 +36,7 @@ export const CartProvider = ({ children }) => {
 
     for (let cartItem of updatedCartItems) {
       if (cartItem.id === item.id) {
-        cartItem.count = (cartItem.count || 0) + 1;
+        cartItem.count += 1;
         isAlreadyAdded = true;
         break;
       }

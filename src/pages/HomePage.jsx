@@ -8,6 +8,7 @@ import pic2 from "../../public/assets/images/brooke-cagle-ezgW6z6oIvA-unsplash.j
 import yellowOutfit from "../../public/assets/images/dom-hill-nimElTcTNyY-unsplash.jpg";
 
 
+
 const PreviewImages = () => {
   return (
     <>
@@ -18,10 +19,11 @@ const PreviewImages = () => {
             <img className=" h-96 w-2/4 object-cover" src={images[0]}  />
             <img className="h-96 w-2/4 object-cover" src={images[1]} />
           </div>
-
+          <div className="ml-4"> 
           <h1 className=" font-extrabold text-xl pb-1 mt-5 "> {header} </h1>
-          <p> {description} </p>
+          <p className=""> {description} </p>
           <button className=" bg-cool-red text-light-gray px-2 py-1 mt-2 mb-9"> Shop {type} </button>
+          </div>
         </div>
       ))}
     </>

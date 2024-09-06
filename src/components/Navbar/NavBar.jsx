@@ -71,7 +71,10 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 w-full bg-white h-[70px] flex   z-10 items-center   ">
+       {isCategoryNavPopup&&(
+        <MobileCategories setIsCategoryNavPopup = {setIsCategoryNavPopup} isCategoryNavPopup={isCategoryNavPopup}/>
+      )}
+      <nav className="sticky  w-full bg-white h-[70px] flex z-50  items-center border border-b-2 border-cool-red  ">
         <ul className="  flex w-full  justify-between  mx-5 ">
           <NavLink to="/">
             <h2 className="text-4xl text-cool-red font-sans"> Store </h2>
@@ -80,7 +83,7 @@ const NavBar = () => {
        
           <CategoriesNav />
 
-          <div className="flex  mr-5 items-center">
+          <div className="flex  items-center">
             <IconWrapper>
               <FontAwesomeIcon
                 icon={faMagnifyingGlass}
@@ -109,10 +112,9 @@ const NavBar = () => {
      
           </div>
         </ul>
+     
       </nav>
-     {isCategoryNavPopup&&(
-        <MobileCategories setIsCategoryNavPopup = {setIsCategoryNavPopup} isCategoryNavPopup={isCategoryNavPopup}/>
-      )}
+    
      
    
       {searching && (

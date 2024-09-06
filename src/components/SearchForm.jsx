@@ -17,7 +17,7 @@ const SearchForm = ({ searching, setSearching }) => {
     debounce((e)=>{
       inputRef.current.value !='' ? setIsTyping(true): setIsTyping(false)
       setSearchTerm(e.target.value)
-    } , 500)
+    } , 300)
    
 , []
   )
@@ -52,9 +52,10 @@ const SearchForm = ({ searching, setSearching }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  navigate("/searchResults", {
-      state: { filteredProducts },
-      search: `?query=${searchTerm}`
+    
+  navigate(`/searchResults?query=${encodeURIComponent(searchTerm)}`, {
+      state: { filteredProducts }
+    
     });
   };
 
