@@ -3,7 +3,7 @@ import homePageData from '../homepagePicturesData'
 import FeaturedBanner from "../components/FeaturedBanner";
 import showCaseImage1 from "../assets/images/james-marty-h1BuNJZzpC8-unsplash.jpg";
 import pic2 from "../assets/images/brooke-cagle-ezgW6z6oIvA-unsplash.jpg";
-import yellowOutfit from "../assets/images/dom-hill-nimElTcTNyY-unsplash.jpg"
+import yellowOutfit from "../assets/images/dom-hill-yellow-outfit.jpg"
 
 
 
