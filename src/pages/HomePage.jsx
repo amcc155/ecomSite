@@ -1,10 +1,9 @@
 import { useContext, useEffect } from "react";
 import homePageData from '../homepagePicturesData'
-import Card from "../components/Card";
 import FeaturedBanner from "../components/FeaturedBanner";
-import showCaseImage1 from "../../public/assets/images/james-marty-h1BuNJZzpC8-unsplash.jpg";
-import pic2 from "../../public/assets/images/brooke-cagle-ezgW6z6oIvA-unsplash.jpg";
-import yellowOutfit from "../../public/assets/images/dom-hill-nimElTcTNyY-unsplash.jpg";
+import showCaseImage1 from "../assets/images/james-marty-h1BuNJZzpC8-unsplash.jpg";
+import pic2 from "../assets/images/brooke-cagle-ezgW6z6oIvA-unsplash.jpg";
+import yellowOutfit from "../assets/images/dom-hill-nimElTcTNyY-unsplash.jpg"
 
 
 
@@ -15,8 +14,8 @@ const PreviewImages = () => {
         <div className="">
 
           <div className="flex bg-cyan-200">
-            <img className=" h-96 w-2/4 object-cover" src={images[0]}  />
-            <img className="h-96 w-2/4 object-cover" src={images[1]} />
+            <img className=" h-96 w-2/4 object-cover" src={images[0]} loading="lazy"  />
+            <img className="h-96 w-2/4 object-cover" src={images[1]} loading="lazy" />
           </div>
           <div className="ml-4"> 
           <h1 className=" font-extrabold text-xl pb-1 mt-5 "> {header} </h1>
