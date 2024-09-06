@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import homePageData from "../../public/assets/data/homepagePicturesData";
+import homePageData from "../../public/assets/images/homepagePicturesData";
 import { ShopContext } from "../context/ShopContext";
 import Card from "../components/Card";
 import FeaturedBanner from "../components/FeaturedBanner";
