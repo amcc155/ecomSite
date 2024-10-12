@@ -6,6 +6,7 @@ import electronic1 from './assets/images/lum3n--RBuQ2PK_L8-unsplash.jpg'
 import electronic2 from './assets/images/olivier-collet-hLXTRAMuvBY-unsplash.jpg'
 import jewlery1 from './assets/images/ruan-richard-rodrigues-QwRwbZe6dWc-unsplash.jpg'
 import jewlery2 from './assets/images/ian-talmacs-FMk8NacWplQ-unsplash.jpg'
+
 const homePageData = [
     {
         type: 'Mens',

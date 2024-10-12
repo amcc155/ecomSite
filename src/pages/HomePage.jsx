@@ -11,9 +11,9 @@ const PreviewImages = () => {
   return (
     <>
       {homePageData.map(({images, header, type, description}) => (
-        <div className="">
+        <div>
 
-          <div className="flex bg-cyan-200">
+          <div className="flex bg-cyan-200 md:mx-5">
             <img className=" h-96 w-2/4 object-cover" src={images[0]} loading="lazy" alt = 'picture of model'  />
             <img className="h-96 w-2/4 object-cover" src={images[1]} loading="lazy" alt = 'picture of model' />
           </div>

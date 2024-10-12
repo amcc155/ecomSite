@@ -29,7 +29,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const addToCart = (item) => {
-    console.log(toast);
     let isAlreadyAdded = false;
 
     const updatedCartItems = [...cartItems];
@@ -56,10 +55,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const changeItemQuantity = (e, itemName) => {
-    console.log(e.target.value);
-    console.log(itemName)
     const newItems = cartItems.map((item) => {
-      console.log(item)
       if (item.title === itemName) {
         return { ...item, count: parseInt(e.target.value) };
       } else {
